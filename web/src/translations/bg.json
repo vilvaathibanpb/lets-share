@@ -1,0 +1,25 @@
+{
+  "contact_details": "Информация за контакт",
+  "need_help.title": "Нуждаете се от помощ?",
+  "failure": "Нещо се обърка",
+  "nearbyLocations": "Локации в близост",
+  "SHARE": "Споделяне.",
+  "address": "Адрес",
+  "Language": "Език",
+  "add_details": "Добавяне на детайлите ви",
+  "make_a_request":"Обръщам се с молба",
+  "requests":"Обръщам се с молба",
+  "I_can_share":"Мога да споделя",
+  "I_need":"нуждая се",
+  "please_save_your_details_to_proceed":"Моля, запазете данните си, за да продължите",
+  "requesting":null,
+  "offering":null,
+  "NAME": "Име",
+  "OPTIONAL": "(опционално)",
+  "save": "Запазване",
+  "success": "успех",
+  "required": "Необходимо",
+  "ZIP_CODE": "Пощенски код"
+}
+
+

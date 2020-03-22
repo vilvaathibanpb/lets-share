@@ -1,0 +1,25 @@
+{
+  "contact_details": "Kontaktní informace",
+  "need_help.title": "Potřebuješ pomoci?",
+  "failure": "Něco se nezdařilo...",
+  "nearbyLocations": "Místa v okolí",
+  "SHARE": "Sdílet",
+  "address": "Adresa",
+  "Language": "Jazyk",
+  "add_details": "Vyplňte své údaje",
+  "NAME": "Jméno",
+  "enter_what_you_need": "Zadejte, co potřebujete",
+  "make_a_request":"Podej žádost",
+  "requests":"Podej žádost",
+  "I_can_share":"Můžu sdílet",
+  "I_need":"potřebuji",
+  "please_save_your_details_to_proceed":"Chcete-li pokračovat, uložte prosím své údaje",
+  "requesting":null,
+  "offering":null,
+  "OPTIONAL": "(volitelné)",
+  "save": "Uložit",
+  "success": "V pořádku!",
+  "required": "Povinné",
+  "ZIP_CODE": "PSČ"
+}
+

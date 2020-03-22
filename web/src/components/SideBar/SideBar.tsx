@@ -3,8 +3,9 @@ import TagsInput from "react-tagsinput";
 import "./SideBar.css"; // If using WebPack and style-loader.
 import { readFromLS, writeIntoLS } from "../../utils/localStorage";
 import { toast } from "react-toastify";
+import { FormattedMessage } from "react-intl";
 
-const SideBar = ({setUpdateStatus}: any) => {
+const SideBar = ({ setUpdateStatus }: any) => {
   const [tags, setTags] = useState([]);
   const [error, setError] = useState(false);
   const [userDetails, setUserDetails] = useState<any>({
@@ -17,12 +18,12 @@ const SideBar = ({setUpdateStatus}: any) => {
 
   useEffect(() => {
     const userDetailsFromLS = readFromLS();
-    if(userDetailsFromLS) {
-      const {items,...others} = userDetailsFromLS
-      if(items) setTags(items);
-      setUserDetails(others)
-    } 
-  }, [])
+    if (userDetailsFromLS) {
+      const { items, ...others } = userDetailsFromLS;
+      if (items) setTags(items);
+      setUserDetails(others);
+    }
+  }, []);
 
   const handleTags = (selectedTags: any) => {
     setTags(selectedTags);
@@ -44,7 +45,7 @@ const SideBar = ({setUpdateStatus}: any) => {
     const updatedDetails = {
       ...userDetails,
       items: tags
-    }
+    };
     setUpdateStatus(true);
     writeIntoLS(updatedDetails);
   };
@@ -57,7 +58,8 @@ const SideBar = ({setUpdateStatus}: any) => {
       {/* Name  */}
       <div className="mb-5">
         <p className="text-sm mb-2">
-          Name <span className="text-red-700">*</span>
+          <FormattedMessage id="NAME" defaultMessage="Name" />{" "}
+          <span className="text-red-700">*</span>
         </p>
         <input
           className=" border rounded-lg text-sm border-gray-400 p-2 w-full"
@@ -66,13 +68,18 @@ const SideBar = ({setUpdateStatus}: any) => {
           name="name"
           onChange={handleChange}
         />
-        {error && !name && <p className="text-sm text-red-600">Required *</p>}
+        {error && !name && (
+          <p className="text-sm text-red-600">
+            <FormattedMessage id="required" defaultMessage="Required" /> *
+          </p>
+        )}
       </div>
 
       {/* Pincode  */}
       <div className="mb-5">
         <p className="text-sm mb-2">
-          Pin Code <span className="text-red-700">*</span>
+          <FormattedMessage id="ZIP_CODE" defaultMessage="Zip Code" />{" "}
+          <span className="text-red-700">*</span>
         </p>
         <input
           className=" border rounded-lg text-sm border-gray-400 p-2 w-full"
@@ -82,14 +89,20 @@ const SideBar = ({setUpdateStatus}: any) => {
           onChange={handleChange}
         />
         {error && !pincode && (
-          <p className="text-sm text-red-600">Required *</p>
+          <p className="text-sm text-red-600">
+            <FormattedMessage id="required" defaultMessage="Required" /> *
+          </p>
         )}
       </div>
 
       {/* Contact details   */}
       <div className="mb-5">
         <p className="text-sm mb-2">
-          Contact <span className="text-red-700">*</span>
+          <FormattedMessage
+            id="contact_details"
+            defaultMessage="Contact Details"
+          />{" "}
+          <span className="text-red-700">*</span>
         </p>
         <input
           placeholder="Email / Phone Number"
@@ -100,13 +113,18 @@ const SideBar = ({setUpdateStatus}: any) => {
           onChange={handleChange}
         />
         {error && !contact && (
-          <p className="text-sm text-red-600">Required *</p>
+          <p className="text-sm text-red-600">
+            <FormattedMessage id="required" defaultMessage="Required" /> *
+          </p>
         )}
       </div>
 
       {/* Address  */}
       <div>
-        <p className="text-sm mb-2">Address (Optional) </p>
+        <p className="text-sm mb-2">
+          <FormattedMessage id="address" defaultMessage="Address" />{" "}
+          <FormattedMessage id="OPTIONAL" defaultMessage="Optional" />{" "}
+        </p>
         <textarea
           className="border rounded-lg text-sm border-gray-400 p-2 w-full mb-5"
           value={address}
@@ -126,7 +144,7 @@ const SideBar = ({setUpdateStatus}: any) => {
         onClick={handleSave}
         className="active:outline-none focus:outline-none p-2 text-lg font-semibold bg-primary text-white w-full mt-5 rounded-lg"
       >
-        Save
+        <FormattedMessage id="save" defaultMessage="Save" />
       </button>
     </div>
   );
@@ -136,6 +154,8 @@ export default SideBar;
 
 const Title = () => (
   <div className="my-5">
-    <p className="text-lg text-secondary-text font-bold">Your details:</p>
+    <p className="text-lg text-secondary-text font-bold">
+      <FormattedMessage id="add_details" defaultMessage="Add your Details" />{" "}
+    </p>
   </div>
 );
