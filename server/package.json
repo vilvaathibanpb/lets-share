@@ -5,7 +5,7 @@
   "main": "src/app.ts",
   "scripts": {
     "start": "ts-node src/app.ts",
-    "dev": "nodemon --exec ts-node src/app.ts",
+    "dev": "cross-env NODE_ENV=production nodemon --exec ts-node src/app.ts",
     "prettify": "prettier --write",
     "lint": "eslint --fix src/**/*.ts",
     "lint:staged": "eslint --fix"
@@ -15,19 +15,26 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@types/bluebird": "^3.5.30",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.3",
     "@types/morgan": "^1.9.0",
     "@types/node": "^13.9.2",
+    "@types/sequelize": "^4.28.8",
+    "@types/validator": "^12.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
+    "pg": "^7.18.2",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.5",
     "ts-node": "^8.7.0",
     "typescript": "^3.8.3"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
+    "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
