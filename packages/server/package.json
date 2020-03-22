@@ -1,5 +1,5 @@
 {
-  "name": "@lets-share/server",
+  "name": "@helper-human/server",
   "version": "0.0.1",
   "description": "express server for lets-share",
   "main": "src/app.ts",
