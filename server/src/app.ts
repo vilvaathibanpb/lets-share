@@ -7,6 +7,7 @@ import { Sequelize } from 'sequelize';
 import { initUser, User } from './models/user';
 import { initItem, Item } from './models/item';
 import { ItemRequest, initRequest } from './models/request';
+import cors from 'cors';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -20,6 +21,14 @@ if (fs.existsSync(envFilePath)) {
 app.use(morgan('short'));
 // json handling middleware
 app.use(express.json());
+// setup cors middleware
+// TODO: allow only trusted domains here
+app.use(
+  cors({
+    allowedHeaders: '*',
+    origin: '*'
+  })
+);
 
 // initialize the postgress connection
 const sequelize = new Sequelize({
