@@ -13,7 +13,6 @@ function App() {
 
   useEffect(() => {
     import(`./translations/${language}.json`).then((res) => setMessages(res));
-    
   }, [language]);
 
   return (

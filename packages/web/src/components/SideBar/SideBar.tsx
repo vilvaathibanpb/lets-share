@@ -3,11 +3,13 @@ import TagsInput from "react-tagsinput";
 import "./SideBar.css"; // If using WebPack and style-loader.
 import { readFromLS, writeIntoLS } from "../../utils/localStorage";
 import { toast } from "react-toastify";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, injectIntl } from "react-intl";
+import { BASE_URL, endpoints } from "../../utils/constants";
 
-const SideBar = ({ setUpdateStatus }: any) => {
+const SideBar = ({ setUpdateStatus, intl }: any) => {
   const [tags, setTags] = useState([]);
   const [error, setError] = useState(false);
+  const [disabled, toggleDisbaled] = useState(false);
   const [userDetails, setUserDetails] = useState<any>({
     name: null,
     pincode: null,
@@ -20,7 +22,7 @@ const SideBar = ({ setUpdateStatus }: any) => {
     const userDetailsFromLS = readFromLS();
     if (userDetailsFromLS) {
       const { items, ...others } = userDetailsFromLS;
-      if (items) setTags(items);
+      if (items) setTags(items.map((item: any) => item.text));
       setUserDetails(others);
     }
   }, []);
@@ -42,12 +44,45 @@ const SideBar = ({ setUpdateStatus }: any) => {
       setError(true);
       return;
     }
+    const updatedTags = tags.map((tag) => ({ text: tag }))
     const updatedDetails = {
       ...userDetails,
-      items: tags
+      items: updatedTags
     };
-    setUpdateStatus(true);
-    writeIntoLS(updatedDetails);
+    toggleDisbaled(true);
+    fetch(`${BASE_URL}${endpoints.createUsers}`, {
+      method: "POST",
+      body: JSON.stringify(updatedDetails),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => {
+        if (!response) {
+          toggleDisbaled(false);
+          toast.error(
+            intl.formatMessage({
+              id: "failure",
+              defaultMessage: "Something went wrong"
+            })
+          );
+          return;
+        }
+        return response.json();
+      })
+      .then(data => {
+        toggleDisbaled(false)
+        setUserDetails({ ...userDetails, userId: data.userId })
+        writeIntoLS({ ...updatedDetails, userId: data.userId });
+        setUpdateStatus(true);
+        toast.success(
+          intl.formatMessage({
+            id: "success",
+            defaultMessage: "Success!"
+          })
+        );
+      });
   };
 
   const { name, pincode, contact, address } = userDetails;
@@ -135,13 +170,14 @@ const SideBar = ({ setUpdateStatus }: any) => {
 
       {/* Items */}
       <div className="tag-box">
-        <p className="text-sm mb-2">Item</p>
+        <p className="text-sm mb-2">Item (Use Enter key to add an item)</p>
         <TagsInput value={tags} onChange={handleTags} />
       </div>
 
       {/* Save button  */}
       <button
         onClick={handleSave}
+        disabled={disabled}
         className="active:outline-none focus:outline-none p-2 text-lg font-semibold bg-primary text-white w-full mt-5 rounded-lg"
       >
         <FormattedMessage id="save" defaultMessage="Save" />
@@ -150,7 +186,7 @@ const SideBar = ({ setUpdateStatus }: any) => {
   );
 };
 
-export default SideBar;
+export default injectIntl(SideBar);
 
 const Title = () => (
   <div className="my-5">

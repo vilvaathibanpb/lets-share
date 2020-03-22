@@ -1,8 +1,8 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
-const RequestItem = ({ userDetails }: any) => {
-  const { name, contact, address, items, message } = userDetails;
+const RequestItem = ({ userDetails, items, requestType }: any) => {
+  const { name, contact, address } = userDetails;
   return (
     <div className="w-full border rounded-sm p-5 text-primary-text shadow-xs mb-5">
       <div className="flex flex-col lg:flex-row xl:flex-row justify-between  lg:items-center xl:items-center">
@@ -27,20 +27,12 @@ const RequestItem = ({ userDetails }: any) => {
           {address}
         </p>
       )}
-      {message && (
-        <p className="mt-2 font-bold">
-          <span className="text-sm font-normal text-secondary-text">
-            <FormattedMessage id="I_need" defaultMessage="I need" />
-          </span>
-          : {message}
-        </p>
-      )}
       {items && items.length > 0 && (
-        <p className="mt-2 font-bold">
+        <p className="mt-2">
           <span className="text-sm font-normal text-secondary-text">
-            <FormattedMessage id="I_can_share" defaultMessage="I can share" />
+          {requestType === "requests" ? <FormattedMessage id="I_need" defaultMessage="I need" /> : <FormattedMessage id="I_can_share" defaultMessage="I can share" />} : 
           </span>
-          : {items.join(", ")}
+           <span className="ml-2">{items.map(((item: any) => item.text)).join(", ")}</span>
         </p>
       )}
     </div>
