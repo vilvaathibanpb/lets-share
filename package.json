@@ -10,7 +10,8 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "bootstrap:web": "lerna bootstrap --scope=@helper-human/web",
-    "boostrap:server": "lerna bootstrap --scope=@helper-human/server",
-    "start-server": "lerna run start --stream --scope=@helper-human/server"
+    "bootstrap:server": "lerna bootstrap --scope=@helper-human/server",
+    "start-server": "lerna run start --stream --scope=@helper-human/server",
+    "heroku-postbuild": "yarn bootstrap:server"
   }
 }
