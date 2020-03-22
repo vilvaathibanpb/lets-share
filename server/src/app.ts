@@ -114,6 +114,58 @@ app.post('/requests/create', async (req: Request, res: Response) => {
   }
 });
 
+app.get('/users/:pincode', async (req: Request, res: Response) => {
+  const pincode = req.params.pincode;
+
+  try {
+    const users = await User.findAll({
+      where: { pincode }
+    });
+
+    res.json({
+      error: false,
+      users
+    });
+  } catch (error) {
+    res.json({
+      error
+    });
+  }
+});
+
+app.get('/shared/:pincode', async (req: Request, res: Response) => {
+  const pincode = req.params.pincode;
+  const shared: { user: User; items: Item[] }[] = [];
+
+  try {
+    const users = await User.findAll({
+      where: {
+        pincode
+      }
+    });
+
+    for (const user of users) {
+      const items = await Item.findAll({
+        where: {
+          userId: user.id
+        }
+      });
+
+      shared.push({
+        user,
+        items
+      });
+    }
+
+    res.json({
+      error: false,
+      shared
+    });
+  } catch (error) {
+    res.json({ error });
+  }
+});
+
 app.get('/requests/:pincode', async (req: Request, res: Response) => {
   const pincode = req.params.pincode;
   const userWithRequests: {
@@ -123,36 +175,40 @@ app.get('/requests/:pincode', async (req: Request, res: Response) => {
     };
   } = {};
 
-  const items = await ItemRequest.findAll({
-    where: {
-      pincode
-    }
-  });
+  try {
+    const items = await ItemRequest.findAll({
+      where: {
+        pincode
+      }
+    });
 
-  for (const item of items) {
-    if (!userWithRequests[item.userId]) {
-      userWithRequests[item.userId] = {
-        user: await User.findOne({
-          where: {
-            id: item.userId
-          }
-        }),
-        items: []
-      };
+    for (const item of items) {
+      if (!userWithRequests[item.userId]) {
+        userWithRequests[item.userId] = {
+          user: await User.findOne({
+            where: {
+              id: item.userId
+            }
+          }),
+          items: []
+        };
+      }
+
+      if (userWithRequests[item.userId] !== null) {
+        userWithRequests[item.userId].items.push(item);
+      }
     }
 
-    if (userWithRequests[item.userId] !== null) {
-      userWithRequests[item.userId].items.push(item);
-    }
+    // this returns as an array of user with requests array
+    const requests = Object.values(userWithRequests);
+
+    res.json({
+      error: false,
+      requests
+    });
+  } catch (error) {
+    res.json({ error });
   }
-
-  // this returns as an array of user with requests array
-  const requests = Object.values(userWithRequests);
-
-  res.json({
-    error: false,
-    requests
-  });
 });
 
 app.listen(PORT, () => {
