@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "lerna": "^3.20.2"
+  },
+  "name": "helper-human",
+  "repository": "https://github.com/vilvaathibanpb/lets-share.git",
+  "author": "Vilva Athiban",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "bootstrap:web": "lerna bootstrap --scope=@helper-human/web",
+    "boostrap:server": "lerna bootstrap --scope=@helper-human/server",
+    "start-server": "lerna run start --stream --scope=@helper-human/server"
+  }
+}
