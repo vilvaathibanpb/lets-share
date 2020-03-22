@@ -4,7 +4,8 @@ import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 import { Sequelize } from 'sequelize';
-import { initUser } from './models/user';
+import { initUser, User } from './models/user';
+import { initItem, Item } from './models/item';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -28,9 +29,6 @@ const sequelize = new Sequelize({
   dialect: 'postgres'
 });
 
-// initialize all the models
-initUser(sequelize);
-
 // authenticate and test the connection
 sequelize
   .authenticate()
@@ -45,7 +43,11 @@ sequelize
     );
   });
 
-// initialize models
+// initialize all the models
+initUser(sequelize);
+initItem(sequelize);
+
+sequelize.sync();
 
 if (process.env.NODE_ENV === 'development') {
   console.log('express server is running in devlopment mode 🔨');
@@ -53,8 +55,40 @@ if (process.env.NODE_ENV === 'development') {
   console.log('express server is running in production mode 🔨');
 }
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World!');
+app.post('/users/create', async (req: Request, res: Response) => {
+  let { userId, name, pincode, address, contact, items } = req.body;
+
+  try {
+    const userItems = [];
+
+    if (!userId) {
+      const { id } = await User.create({
+        name,
+        pincode,
+        address,
+        contact
+      });
+
+      userId = id;
+    }
+
+    for (const item of items) {
+      userItems.push({
+        text: item.text,
+        userId: userId
+      });
+    }
+
+    Item.bulkCreate(userItems);
+
+    res.json({
+      error: false
+    });
+  } catch (err) {
+    res.json({
+      error: err
+    });
+  }
 });
 
 app.listen(PORT, () => {
