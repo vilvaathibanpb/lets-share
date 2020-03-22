@@ -1,4 +1,5 @@
 import React from "react";
+import { FormattedMessage } from "react-intl";
 
 interface HeaderProps {
   language: string;
@@ -13,7 +14,7 @@ const Header = ({ language, setLanguage }: HeaderProps) => {
       </p>
       <div className="flex items-center w-1/2 lg:w-1/4 xl:w-1/4 justify-end">
         <p className="hidden lg:block xl:block  text-sm text-primary-text">
-          Select Language:
+          <FormattedMessage id="Language" defaultMessage="Language" />
         </p>
         <select
           className="border rounded-lg text-sm border-gray-400 focus:outline-none active:outline-none bg-primary text-white p-5 ml-3 h-10 w-full lg:w-1/2 xl:w-1/2"
@@ -21,10 +22,24 @@ const Header = ({ language, setLanguage }: HeaderProps) => {
           value={language}
           onChange={e => setLanguage(e.target.value)}
         >
-          <option value="en">English</option>
-          <option value="sp">spanish</option>
+          <option value="bg">Bulgarian</option>
+          <option value="cs">Czech</option>
+          <option value="da">Danish</option>
           <option value="de">German</option>
+          <option value="en">English</option>
+          <option value="es">Spanish</option>
+          <option value="fi">Finnish</option>
           <option value="fr">French</option>
+          <option value="hr">Croatian</option>
+          <option value="hu">Hungarian</option>
+          <option value="it">Italian</option>
+          <option value="nb">Norwegian</option>
+          <option value="nl">Dutch</option>
+          <option value="pl">Polish</option>
+          <option value="pt">Portuguese</option>
+          <option value="ru">Russian</option>
+          <option value="uk">Ukrainian</option>
+          <option value="zh">Chinese</option>
         </select>
       </div>
     </div>

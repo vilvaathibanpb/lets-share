@@ -45,7 +45,7 @@ const MainContent = ({ updated, setUpdateStatus }: MainContentProps) => {
             setRequestType={setRequestType}
           />
           <div className="justify-around items-center flex p-5 flex-col">
-            {showLoader ? (
+            {!showLoader ? ( //TODO
               <Loader />
             ) : (
               <>

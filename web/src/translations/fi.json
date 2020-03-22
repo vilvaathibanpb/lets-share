@@ -1,0 +1,25 @@
+{
+  "contact_details": "Yhteystiedot",
+  "need_help.title": "Tarvitsetko apua?",
+  "failure": "Jokin meni vikaan",
+  "nearbyLocations": "Läheiset kohteet",
+  "SHARE": "Jaa.",
+  "address": "Osoite",
+  "Language": "Kieli",
+  "add_details": "Anna tietosi",
+  "NAME": "Nimi",
+ "enter_what_you_need":"Kirjoita mitä tarvitset",
+"make_a_request":"Tehdä pyyntö",
+"requests":"Tehdä pyyntö",
+"I_can_share":"Voin kertoa",
+"I_need":"tarvitsen",
+"please_save_your_details_to_proceed":"Tallenna tietosi jatkaaksesi",
+"requesting":null,
+"offering":null,
+  "OPTIONAL": "Valinnainen",
+  "save": "Tallenna",
+  "success": "Onnistui",
+  "required": "Pakollinen",
+  "ZIP_CODE": "Postinumero"
+}
+

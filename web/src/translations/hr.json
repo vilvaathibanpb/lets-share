@@ -1,0 +1,25 @@
+{
+  "contact_details": "Podaci za kontakt",
+  "need_help.title": "Trebate pomoć?",
+  "failure": "Dogodio se problem",
+  "nearbyLocations": "Lokacije u blizini",
+  "SHARE": "Dijelite.",
+  "address": "Adresa",
+  "Language": "Jezik",
+  "enter_what_you_need":"Enter what you need",
+"make_a_request":"Podnesite zahtjev",
+"requests":"Podnesite zahtjev",
+"I_can_share":"Mogu dijeliti",
+"I_need":"trebam",
+"please_save_your_details_to_proceed":"Spremite svoje podatke da biste nastavili",
+"requesting":null,
+"offering":null,
+  "add_details": "Dodaj svoje podatke",
+  "NAME": "Ime",
+  "OPTIONAL": "(opcija)",
+  "save": "Spremi",
+  "success": "Poštanski broj",
+  "required": "Potrebno",
+  "ZIP_CODE": "Poštanski broj"
+}
+
