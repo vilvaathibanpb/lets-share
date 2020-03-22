@@ -6,6 +6,7 @@ import path from 'path';
 import { Sequelize } from 'sequelize';
 import { initUser, User } from './models/user';
 import { initItem, Item } from './models/item';
+import { ItemRequest, initRequest } from './models/request';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -46,6 +47,7 @@ sequelize
 // initialize all the models
 initUser(sequelize);
 initItem(sequelize);
+initRequest(sequelize);
 
 sequelize.sync();
 
@@ -84,9 +86,29 @@ app.post('/users/create', async (req: Request, res: Response) => {
     res.json({
       error: false
     });
-  } catch (err) {
+  } catch (error) {
     res.json({
-      error: err
+      error
+    });
+  }
+});
+
+app.post('/requests/create', async (req: Request, res: Response) => {
+  let { userId, text, pincode } = req.body;
+
+  try {
+    await ItemRequest.create({
+      userId,
+      text,
+      pincode
+    });
+
+    res.json({
+      error: false
+    });
+  } catch (error) {
+    res.json({
+      error
     });
   }
 });
