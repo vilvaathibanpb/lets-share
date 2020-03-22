@@ -25,8 +25,7 @@ export function initUser(sequelize: Sequelize) {
         allowNull: false
       },
       address: {
-        type: DataTypes.TEXT,
-        allowNull: false
+        type: DataTypes.TEXT
       },
       contact: {
         type: DataTypes.STRING,
