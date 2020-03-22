@@ -84,7 +84,8 @@ app.post('/users/create', async (req: Request, res: Response) => {
     Item.bulkCreate(userItems);
 
     res.json({
-      error: false
+      error: false,
+      userId
     });
   } catch (error) {
     res.json({
@@ -111,6 +112,47 @@ app.post('/requests/create', async (req: Request, res: Response) => {
       error
     });
   }
+});
+
+app.get('/requests/:pincode', async (req: Request, res: Response) => {
+  const pincode = req.params.pincode;
+  const userWithRequests: {
+    [key: number]: {
+      user: User | null;
+      items: Item[];
+    };
+  } = {};
+
+  const items = await ItemRequest.findAll({
+    where: {
+      pincode
+    }
+  });
+
+  for (const item of items) {
+    if (!userWithRequests[item.userId]) {
+      userWithRequests[item.userId] = {
+        user: await User.findOne({
+          where: {
+            id: item.userId
+          }
+        }),
+        items: []
+      };
+    }
+
+    if (userWithRequests[item.userId] !== null) {
+      userWithRequests[item.userId].items.push(item);
+    }
+  }
+
+  // this returns as an array of user with requests array
+  const requests = Object.values(userWithRequests);
+
+  res.json({
+    error: false,
+    requests
+  });
 });
 
 app.listen(PORT, () => {
