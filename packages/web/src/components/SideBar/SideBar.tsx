@@ -120,7 +120,7 @@ const SideBar = ({ setUpdateStatus, intl, dataUpdated, setDataStatus }: any) => 
         </p>
         <input
           className=" border rounded-lg text-sm border-gray-400 p-2 w-full"
-          type="number"
+          type="text"
           value={pincode}
           name="pincode"
           onChange={handleChange}
