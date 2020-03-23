@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { View } from 'react-native';
-import { Header, Stack, Text, Card, Box, StackList } from 'react-native-design-system';
+import { Header, Stack, Text, Card, FullScreenLoader, StackList } from 'react-native-design-system';
 import { getAvailableItemsAtPincode } from '../networking/db';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const AvailableItemScreen = () => {
     const [shared, setSharedItem] = useState([]);
     const [auth, setAuthInfo] = useState({});
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function getUserInfo() {
@@ -25,12 +26,13 @@ const AvailableItemScreen = () => {
             if (!data.error) {
                 setSharedItem(data.shared);
             }
+            setLoading(false);
         }
         fetchRequest();
     }, [auth]);
 
     return (
-        <View>
+        <View style={{ flex: 1 }}>
             <Header>Zip Code : {auth.pincode}</Header>
             <StackList
                 horizontalSpace="small"
@@ -54,6 +56,7 @@ const AvailableItemScreen = () => {
                     )
                 }}
             />
+            <FullScreenLoader loading={loading} />
         </View>
     );
 }

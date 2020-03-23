@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { View, StyleSheet } from 'react-native';
-import { Header, Stack, Text, Card, ActionButton, StackList } from 'react-native-design-system';
+import { Header, Stack, Text, Card, ActionButton, StackList, FullScreenLoader } from 'react-native-design-system';
 import { getRequestsAtPincode } from '../networking/db';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const RequestScreen = (props) => {
     const [requests, setRequest] = useState([]);
     const [auth, setAuthInfo] = useState({});
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function getUserInfo() {
@@ -23,6 +24,7 @@ const RequestScreen = (props) => {
             if(!data.error){
                 setRequest(data.requests);
             }
+            setLoading(false);
         }
         fetchRequest();
     }, [auth]);
@@ -51,6 +53,7 @@ const RequestScreen = (props) => {
                 }}
             />
             <ActionButton style={styles.actionButton} onPress={() => props.navigation.navigate('Create')} />
+            <FullScreenLoader loading={loading} />
         </View>
     );
 }
