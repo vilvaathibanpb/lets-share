@@ -20,7 +20,7 @@ function App() {
     <IntlProvider locale={language} messages={messages}>
     <div className="lg:w-full">
       <Header language={language} setLanguage={setLanguage} />
-      <div className="flex flex-col lg:flex-row xl:flex-row">
+      <div className="flex flex-col lg:flex-row xl:flex-row flex-col-reverse">
         <SideBar setUpdateStatus={setUpdateStatus} setDataStatus={setDataStatus} dataUpdated={dataUpdated}/>
         <MainContent updated={updated} setUpdateStatus={setUpdateStatus} setDataStatus={setDataStatus} dataUpdated={dataUpdated}/>
       </div>
