@@ -51,6 +51,9 @@ const createRequest = async (body) => {
     try {
         const response = await fetch(`${url}/requests/create`, {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(body)
         });
         const data = await response.json();
