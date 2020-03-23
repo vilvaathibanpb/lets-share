@@ -5,8 +5,9 @@ import { readFromLS, writeIntoLS } from "../../utils/localStorage";
 import { toast } from "react-toastify";
 import { FormattedMessage, injectIntl } from "react-intl";
 import { BASE_URL, endpoints } from "../../utils/constants";
+import FullScreenLoader from "./FullScreenLoader";
 
-const SideBar = ({ setUpdateStatus, intl }: any) => {
+const SideBar = ({ setUpdateStatus, intl, dataUpdated, setDataStatus }: any) => {
   const [tags, setTags] = useState([]);
   const [error, setError] = useState(false);
   const [disabled, toggleDisbaled] = useState(false);
@@ -73,6 +74,7 @@ const SideBar = ({ setUpdateStatus, intl }: any) => {
       })
       .then(data => {
         toggleDisbaled(false)
+        setDataStatus(true);
         setUserDetails({ ...userDetails, userId: data.userId })
         writeIntoLS({ ...updatedDetails, userId: data.userId });
         setUpdateStatus(true);
@@ -87,9 +89,9 @@ const SideBar = ({ setUpdateStatus, intl }: any) => {
 
   const { name, pincode, contact, address } = userDetails;
   return (
-    <div className="py-3 lg:min-h-screen xl:min-h-screen px-5 lg:w-1/3 xl:w-1/3 md:w-full sm:w-full bg-yellow shadow-inner">
+    <div className={`py-3 lg:min-h-screen xl:min-h-screen px-5 lg:w-1/3 xl:w-1/3 md:w-full sm:w-full bg-yellow shadow-inner ${dataUpdated ? 'hidden lg:block xl:block' : ''}`}>
       <Title />
-
+      {disabled && <FullScreenLoader /> }
       {/* Name  */}
       <div className="mb-5">
         <p className="text-sm mb-2">

@@ -7,7 +7,8 @@ module.exports = {
         "primary": '#1CB867',
         "secondary-text": '#949292',
         "primary-text": '#333333',
-        "link": '#095FBE'
+        "link": '#095FBE',
+        "custom-gray": "#f7fbfb"
       }
     }
   },

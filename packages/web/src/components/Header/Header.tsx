@@ -17,7 +17,7 @@ const Header = ({ language, setLanguage }: HeaderProps) => {
           <FormattedMessage id="Language" defaultMessage="Language" />
         </p>
         <select
-          className="border rounded-lg text-sm border-gray-400 focus:outline-none active:outline-none bg-primary text-white p-5 ml-3 h-10 w-full lg:w-1/2 xl:w-1/2"
+          className="border rounded-lg text-sm border-gray-400 focus:outline-none active:outline-none bg-primary text-white p-1 lg:p-5 xl:p-5 ml-3 h-10 w-full lg:w-1/2 xl:w-1/2"
           placeholder="choose your language"
           value={language}
           onChange={e => setLanguage(e.target.value)}

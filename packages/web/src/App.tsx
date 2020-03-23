@@ -10,6 +10,7 @@ function App() {
   const [language, setLanguage] = useState("en");
   const [messages, setMessages] = useState({});
   const [updated, setUpdateStatus] = useState(false);
+  const [dataUpdated, setDataStatus] = useState(false);
 
   useEffect(() => {
     import(`./translations/${language}.json`).then((res) => setMessages(res));
@@ -20,8 +21,8 @@ function App() {
     <div className="lg:w-full">
       <Header language={language} setLanguage={setLanguage} />
       <div className="flex flex-col lg:flex-row xl:flex-row">
-        <SideBar setUpdateStatus={setUpdateStatus} />
-        <MainContent updated={updated} setUpdateStatus={setUpdateStatus} />
+        <SideBar setUpdateStatus={setUpdateStatus} setDataStatus={setDataStatus} dataUpdated={dataUpdated}/>
+        <MainContent updated={updated} setUpdateStatus={setUpdateStatus} setDataStatus={setDataStatus} dataUpdated={dataUpdated}/>
       </div>
       <ToastContainer />
     </div>

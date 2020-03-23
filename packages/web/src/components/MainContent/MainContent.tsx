@@ -13,9 +13,11 @@ interface MainContentProps {
   updated: boolean;
   setUpdateStatus: any;
   intl: any;
+  setDataStatus: any; 
+  dataUpdated: boolean;
 }
 
-const MainContent = ({ updated, setUpdateStatus, intl }: MainContentProps) => {
+const MainContent = ({ updated, setUpdateStatus, intl, setDataStatus, dataUpdated }: MainContentProps) => {
   const [userAllowed, setUserStatus] = useState(false);
   const [userDetails, setUserDetails] = useState<any>({});
   const [requestType, setRequestType] = useState("requests");
@@ -72,8 +74,8 @@ const MainContent = ({ updated, setUpdateStatus, intl }: MainContentProps) => {
   const { pincode, userId } = userDetails;
 
   return (
-    <div className="w-full p-5">
-      <TitleSection userAllowed={userAllowed} pincode={userDetails.pincode} />
+    <div className="w-full p-5 bg-custom-gray">
+      <TitleSection userAllowed={userAllowed} pincode={userDetails.pincode} setDataStatus={setDataStatus} dataUpdated={dataUpdated} />
       {userAllowed && (
         <>
           <MakeRequest pincode={pincode} userId={userId} refreshList={refreshList} />

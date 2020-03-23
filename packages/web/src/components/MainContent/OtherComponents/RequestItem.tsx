@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 const RequestItem = ({ userDetails, items, requestType }: any) => {
   const { name, contact, address } = userDetails;
   return (
-    <div className="w-full border rounded-sm p-5 text-primary-text shadow-xs mb-5">
+    <div className="bg-white w-full border rounded-sm p-5 text-primary-text shadow-xs mb-5">
       <div className="flex flex-col lg:flex-row xl:flex-row justify-between  lg:items-center xl:items-center">
         <p className="text-xs lg:text-lg xl:text-lg font-semibold text-link">
           {name}

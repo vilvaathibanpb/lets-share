@@ -52,7 +52,7 @@ const MakeRequest = ({ pincode, userId, intl, refreshList }: MakeRequestProps) =
   };
 
   return (
-    <div className="flex flex-col lg:flex-row xl:flex-row my-8 justify-center items-center">
+    <div className="flex flex-col lg:flex-row xl:flex-row my-8 justify-start items-start">
       <textarea
         // @ts-ignore
         placeholder={intl.formatMessage({
