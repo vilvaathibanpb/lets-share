@@ -82,6 +82,12 @@ app.post('/users/create', async (req: Request, res: Response) => {
 
       userId = id;
     }
+    else {
+      // updated the existing user
+      await User.update({ name, pincode, address, contact }, {
+        where: { id: userId }
+      })
+    }
 
     for (const item of items) {
       userItems.push({
