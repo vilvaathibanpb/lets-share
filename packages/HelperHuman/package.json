@@ -16,6 +16,7 @@
     "@react-navigation/native": "^5.1.2",
     "@react-navigation/stack": "^5.2.5",
     "react": "16.9.0",
+    "react-intl": "^4.2.2",
     "react-native": "0.61.5",
     "react-native-design-system": "iamshadmirza/react-native-design-system#master",
     "react-native-gesture-handler": "^1.6.1",

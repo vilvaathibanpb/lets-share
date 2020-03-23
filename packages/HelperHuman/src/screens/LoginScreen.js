@@ -3,6 +3,7 @@ import { View, ScrollView, ToastAndroid, Platform, TouchableWithoutFeedback, Key
 import { Header, Stack, Input, Button } from 'react-native-design-system';
 import { createUser } from '../networking/db';
 import AsyncStorage from '@react-native-community/async-storage';
+import { FormattedMessage } from "react-intl";
 
 const INITIAL_STATE = {
     name: '',
@@ -76,7 +77,7 @@ const LoginScreen = ({ navigation }) => {
                     <ScrollView>
                         <Stack horizontalSpace="medium" cropEndSpace={false}>
                             <Input
-                                label="Name"
+                                label={<FormattedMessage id="NAME" defaultMessage="Name" />}
                                 value={state.name}
                                 outline
                                 autoCapitalize="words"
