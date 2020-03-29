@@ -33,7 +33,7 @@ app.use(
 // initialize the postgress connection
 const sequelize = new Sequelize({
   database: process.env.DB_NAME,
-  host: `${process.env.DB_HOST}`,
+  host: process.env.DB_HOST,
   username: process.env.DB_USER,
   password: process.env.DB_PWD,
   dialect: 'postgres'
@@ -81,12 +81,14 @@ app.post('/users/create', async (req: Request, res: Response) => {
       });
 
       userId = id;
-    }
-    else {
+    } else {
       // updated the existing user
-      await User.update({ name, pincode, address, contact }, {
-        where: { id: userId }
-      })
+      await User.update(
+        { name, pincode, address, contact },
+        {
+          where: { id: userId }
+        }
+      );
     }
 
     for (const item of items) {
