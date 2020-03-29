@@ -48,7 +48,6 @@ sequelize
     // truncate all the tables in the right order
     Item.truncate({ cascade: true })
     .then(() => ItemRequest.truncate({ cascade: true })) 
-    .then(() => User.truncate({ cascade: true }))
     .then(() => {
       console.log('CABOOM, purged all the tables 💥');
     })
