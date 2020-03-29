@@ -30,9 +30,11 @@
     "@babel/runtime": "^7.9.2",
     "@react-native-community/eslint-config": "^0.0.7",
     "babel-jest": "^25.1.0",
+    "babel-plugin-macros": "^2.8.0",
     "eslint": "^6.8.0",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
+    "preval.macro": "^5.0.0",
     "react-test-renderer": "16.9.0"
   },
   "jest": {
