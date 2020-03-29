@@ -8,15 +8,15 @@ theme.brandColor.primary = colors.green[700];
 export default function App() {
   const [language, setLanguage] = useState("en");
   const [messages, setMessages] = useState({});
-  useEffect(() => {
-    import(`./src/translations/${language}.json`).then((res) => setMessages(res));
-  }, [language]);
+  // useEffect(() => {
+  //   import(`./src/translations/${language}.json`).then((res) => setMessages(res));
+  // }, [language]);
 
   return (
     <ThemeProvider value={theme}>
-      <IntlProvider locale={language} messages={messages}>
+      {/* <IntlProvider locale={language} messages={messages}> */}
         <Router />
-      </IntlProvider>
+      {/* </IntlProvider> */}
     </ThemeProvider>
   );
 }

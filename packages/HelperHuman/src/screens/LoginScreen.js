@@ -77,7 +77,7 @@ const LoginScreen = ({ navigation }) => {
                     <ScrollView>
                         <Stack horizontalSpace="medium" cropEndSpace={false}>
                             <Input
-                                label={<FormattedMessage id="NAME" defaultMessage="Name" />}
+                                // label={<FormattedMessage id="NAME" defaultMessage="Name" />}
                                 value={state.name}
                                 outline
                                 autoCapitalize="words"
