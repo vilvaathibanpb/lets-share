@@ -24,6 +24,7 @@ const getAvailableItemsAtPincode = async (pin) => {
     try {
         const response = await fetch(`${url}/shared/${pin}`);
         const data = await response.json();
+        console.log('assas', pin, data)
         return data;
     } catch (error) {
         console.log(error)

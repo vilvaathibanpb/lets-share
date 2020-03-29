@@ -3,8 +3,9 @@ import { View, StyleSheet } from 'react-native';
 import { Header, Stack, Text, Card, ActionButton, StackList, FullScreenLoader } from 'react-native-design-system';
 import { getRequestsAtPincode } from '../networking/db';
 import AsyncStorage from '@react-native-community/async-storage';
+import { FormattedMessage } from "react-intl";
 
-const RequestScreen = (props) => {
+const RequestScreen = ({ navigation }) => {
     const [requests, setRequest] = useState([]);
     const [auth, setAuthInfo] = useState({});
     const [loading, setLoading] = useState(true);
@@ -21,7 +22,7 @@ const RequestScreen = (props) => {
     useEffect(() => {
         async function fetchRequest(){
             const data = await getRequestsAtPincode(auth.pincode);
-            if(!data.error){
+            if(data){
                 setRequest(data.requests);
             }
             setLoading(false);
@@ -31,7 +32,7 @@ const RequestScreen = (props) => {
 
     return (
         <View style={{ flex: 1 }}>
-            <Header>Zip Code : {auth.pincode}</Header>
+            <Header><FormattedMessage id="ZIP_CODE" defaultMessage="Zip Code" />: {auth.pincode}</Header>
             <StackList
                 horizontalSpace="small"
                 cropEndSpace={false}
@@ -43,16 +44,16 @@ const RequestScreen = (props) => {
                     return (
                         <Card>
                             <Stack space="xsmall">
-                                <Text>{name}</Text>
-                                <Text color="grey">Contact: <Text>{contact}</Text></Text>
-                                <Text color="grey">Address: <Text>{address}</Text></Text>
-                                <Text color="grey">Request: <Text fontWeight="bold">{tags.join(', ')}</Text></Text>
+                                <Text><FormattedMessage id="NAME" defaultMessage="Name" />: {name}</Text>
+                                <Text color="grey"><FormattedMessage id="contact_details" defaultMessage="Contact" />: <Text>{contact}</Text></Text>
+                                <Text color="grey"><FormattedMessage id="address" defaultMessage="Address" />: <Text>{address}</Text></Text>
+                                <Text color="grey"><FormattedMessage id="I_need" defaultMessage="I need" />: <Text fontWeight="bold">{tags.join(', ')}</Text></Text>
                             </Stack>
                         </Card>
                     )
                 }}
             />
-            <ActionButton style={styles.actionButton} onPress={() => props.navigation.navigate('Create')} />
+            <ActionButton style={styles.actionButton} onPress={() => navigation.navigate('CreateRequest')} />
             <FullScreenLoader loading={loading} />
         </View>
     );

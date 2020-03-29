@@ -3,10 +3,10 @@ import { View, TouchableOpacity, Platform, ToastAndroid } from 'react-native';
 import { Stack, Input, Button, Header } from 'react-native-design-system';
 import Feather from 'react-native-vector-icons/Feather';
 import AsyncStorage from '@react-native-community/async-storage';
-import { createRequest } from '../networking/db';
+import { createUser } from '../networking/db';
 import { FormattedMessage } from "react-intl";
 
-const CreateRequest = ({ navigation }) => {
+const CreateHelp = ({ navigation }) => {
     const [text, setText] = useState('');
     const [auth, setAuthInfo] = useState({});
     const [loading, setLoading] = useState(false);
@@ -21,14 +21,16 @@ const CreateRequest = ({ navigation }) => {
     }, [null]);
 
     const onSubmitPress = async () => {
-        const { userId, pincode } = auth;
+        const { userId, name, pincode, contact, } = auth;
+        if(!text){ return; }
         setLoading(true);
-        const data = await createRequest({ userId, pincode, text });
+        const itemArray = text.split(",").map(tag => ({ text: tag }));
+        const data = await createUser({ name, pincode, contact, items: itemArray });
         if (data) {
             //redirect
             setLoading(false);
             if (Platform.OS === 'android') {
-                ToastAndroid.show('Request submitted', ToastAndroid.SHORT);
+                ToastAndroid.show('Items submitted', ToastAndroid.SHORT);
             }
             navigation.goBack();
         } else {
@@ -49,23 +51,23 @@ const CreateRequest = ({ navigation }) => {
                     </TouchableOpacity>
                 }
             >
-                Create Request
+                Create Help
             </Header>
             <Stack horizontalSpace="medium" cropEndSpace={false}>
                 <Input
                     autoFocus
                     outline
-                    label={<FormattedMessage id="enter_what_you_need" defaultMessage="Enter what you need" />}
-                    placeholder="Enter your request"
+                    label={<FormattedMessage id="I_can_share" defaultMessage="Rice, Wheat, Oil" />}
+                    placeholder="Enter items you can share"
                     value={text}
                     onChangeText={setText}
                 />
                 <Button outline onPress={onSubmitPress} loading={loading}>
-                    <FormattedMessage id="make_a_request" defaultMessage="Make a request" />
+                    <FormattedMessage id="I_can_share" defaultMessage="Make a I can share" />
                 </Button>
             </Stack>
         </View>
     )
 }
 
-export default CreateRequest;
+export default CreateHelp;

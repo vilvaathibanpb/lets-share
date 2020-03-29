@@ -11,13 +11,15 @@ export default function App() {
   const [language, setLanguage] = useState("en");
   const [messages, setMessages] = useState({});
   
-  console.log(TRANSLATIONS);
+  useEffect(() => {
+    setMessages(TRANSLATIONS[language])
+  }, [language]);
 
   return (
     <ThemeProvider value={theme}>
-      {/* <IntlProvider locale={language} messages={messages}> */}
+      <IntlProvider locale={language} messages={messages}>
         <Router />
-      {/* </IntlProvider> */}
+      </IntlProvider>
     </ThemeProvider>
   );
 }
