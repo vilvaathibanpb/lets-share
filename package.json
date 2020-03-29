@@ -9,6 +9,7 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "cron": "lerna run cron --stream --scope=@helper-human/server",
     "bootstrap:web": "lerna bootstrap --scope=@helper-human/web",
     "bootstrap:server": "lerna bootstrap --scope=@helper-human/server",
     "start-server": "lerna run start --stream --scope=@helper-human/server",
