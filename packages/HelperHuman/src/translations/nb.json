@@ -1,0 +1,25 @@
+{
+  "contact_details": "Kontaktdetaljer",
+  "need_help.title": "Trenger du hjelp?",
+  "failure": "Noe gikk galt",
+  "nearbyLocations": "Steder i nærheten",
+  "SHARE": "Del",
+  "address": "Adresse",
+  "Language": "Språk",
+  "add_details": "Legg til opplysningene dine",
+  "NAME": "Navn",
+  "enter_what_you_need":"Skriv inn det du trenger",
+  "make_a_request":"Een verzoek doen",
+  "requests":"Een verzoek doen",
+  "I_can_share":"Ik kan delen",
+  "I_need":"ik heb nodig",
+  "please_save_your_details_to_proceed":"Sla uw gegevens op om door te gaan",
+  "requesting":null,
+  "offering":null,
+  "OPTIONAL": "Valgfri",
+  "save": "Lagre",
+  "success": "Ferdig!",
+  "required": "Obligatorisk",
+  "ZIP_CODE": "Post kode"
+}
+

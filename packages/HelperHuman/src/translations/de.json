@@ -1,0 +1,25 @@
+{
+  "contact_details": "Kontaktdaten",
+  "need_help.title": "Brauchst du Hilfe?",
+  "failure": "Etwas ist schief gelaufen",
+  "nearbyLocations": "Standorte in der Nähe",
+  "SHARE": "Weitersagen.",
+  "address": "Adresse",
+  "Language": "Sprache",
+  "add_details": "Details hinzufügen",
+  "NAME": "Name",
+  "enter_what_you_need":"Geben Sie ein, was Sie brauchen",
+  "make_a_request":"Eine Anfrage stellen",
+  "requests":"Eine Anfrage stellen",
+  "I_can_share":"Ich kann teilen",
+  "I_need":"Ich brauche",
+  "please_save_your_details_to_proceed":"Bitte speichern Sie Ihre Daten, um fortzufahren",
+  "requesting":null,
+  "offering":null,
+  "OPTIONAL": "(optional)",
+  "save": "Speichern",
+  "success": "Geschafft!",
+  "required": "Erforderlich",
+  "ZIP_CODE": "Postleitzahl"
+}
+

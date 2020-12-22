@@ -1,0 +1,26 @@
+{
+  "contact_details": "Información de contacto",
+  "need_help.title": "¿Necesitas ayuda?",
+  "failure": "Ha habido un error",
+  "nearbyLocations": "Localizaciones cercanas",
+  "SHARE": "Compartir.",
+  "address": "Dirección",
+  "Language": "Idioma",
+  "add_details": "Añadir datos",
+  "NAME": "Nombre",
+  "enter_what_you_need":"Ingrese lo que necesita",
+  "make_a_request":"Hacer una solicitud",
+  "requests":"Hacer una solicitud",
+  "I_can_share":"Puedo compartir",
+  "I_need":"Necesito",
+  "please_save_your_details_to_proceed":"Guarde sus datos para continuar.",
+  "requesting":null,
+  "offering":null,
+  "OPTIONAL": "(opcional)",
+  "save": "Guardar",
+  "success": "¡Hecho!",
+  "required": "Requerido",
+  "ZIP_CODE": "Código postal"
+}
+
+

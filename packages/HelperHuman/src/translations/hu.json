@@ -1,0 +1,25 @@
+{
+  "contact_details": "Kapcsolatfelvételi adatok",
+  "need_help.title": "Segítségre van szüksége?",
+  "failure": "Valami hiba történt",
+  "nearbyLocations": "Közeli helyszínek",
+  "SHARE": "Megosztás.",
+  "address": "Cím",
+  "Language": "Nyelv",
+  "add_details": "Adatok megadása",
+  "NAME": "Név",
+  "enter_what_you_need":"Írja be, amire szüksége van",
+  "make_a_request":"Kérelmezni",
+  "requests":"Kérelmezni",
+  "I_can_share":"Megoszthatom",
+  "I_need":"szükségem van",
+  "please_save_your_details_to_proceed":"Kérjük, mentse adatait a folytatáshoz",
+  "requesting":null,
+  "offering":null,
+  "OPTIONAL": "Választható",
+  "save": "Mentés",
+  "success": "Sok sikert!",
+  "required": "Kötelező",
+  "ZIP_CODE": "Irányítószám"
+}
+
